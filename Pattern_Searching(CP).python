@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+text=input()
+pat=input()
+list=[]
+start=0
+while True:
+    index=text.find(pat,start)
+    if(index==-1):
+        break
+    list.append(index)
+    start=index+1
+for i in list:
+    print(i)
