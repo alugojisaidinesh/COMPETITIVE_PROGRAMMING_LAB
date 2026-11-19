@@ -1,0 +1,13 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+s = input()
+
+target = "hackerrank"
+pointer = 0
+for ch in s:
+    if ch == target[pointer]:
+        pointer = pointer + 1
+    if pointer == len(target):
+        print("YES")
+        break
+if pointer != len(target):
+    print("NO")
