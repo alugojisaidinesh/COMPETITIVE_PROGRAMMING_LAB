@@ -1,0 +1,10 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def gcd(a,b):
+    if b==0:
+        return a
+    return gcd(b,a%b)
+A, B, T = map(int, input().split())
+if T <= max(A, B) and T % gcd(A, B) == 0:
+    print("YES")
+else:
+    print("NO")
