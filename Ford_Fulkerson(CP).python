@@ -1,0 +1,28 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+V, E = map(int, input().split())
+graph = [[0] * V for _ in range(V)]
+for _ in range(E):
+    u, v, c = map(int, input().split())
+    graph[u][v] += c
+def dfs(u, sink, visited, flow):
+    if u == sink:
+        return flow
+    visited[u] = True
+    for v in range(V):
+        if not visited[v] and graph[u][v] > 0:
+            f = dfs(v, sink, visited, min(flow, graph[u][v]))
+            if f > 0:
+                graph[u][v] -= f
+                graph[v][u] += f
+                return f
+    return 0
+source = 0
+sink = V - 1
+max_flow = 0
+while True:
+    visited = [False] * V
+    flow = dfs(source, sink, visited, 10**9)
+    if flow == 0:
+        break
+    max_flow += flow
+print(max_flow)
